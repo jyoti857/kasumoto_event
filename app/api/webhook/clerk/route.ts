@@ -5,7 +5,7 @@ import { createUser, deleteUser, updateUser } from '@/lib/actions/user.actions'
 import { clerkClient } from '@clerk/nextjs'
 import { NextResponse } from 'next/server'
 import { handleError } from '@/lib/utils'
- 
+
 export async function POST(req: Request) {
  
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
@@ -64,9 +64,9 @@ export async function POST(req: Request) {
       const user = {
         clerkId: id,
         email: email_addresses[0].email_address,
-        username: username!, 
-        firstName: first_name,
-        lastName: last_name,
+        username: username! || "username_explicit", 
+        firstName: first_name || "firstName_explicit",
+        lastName: last_name || "lastName_explicit",
         photo: image_url
       }
       const newUser = await createUser(user);
