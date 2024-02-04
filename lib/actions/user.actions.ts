@@ -7,6 +7,14 @@ import User from "../database/models/user.model"
 import Event from "../database/models/event.model"
 import { revalidatePath } from "next/cache"
 
+export async function justToCheckTheConnection(){
+  try{
+    await connectToDatabase();
+  }catch(err){
+    handleError(err)
+  }
+}
+
 export const createUser = async(user: CreateUserParams) => {
   try{
     await connectToDatabase();
