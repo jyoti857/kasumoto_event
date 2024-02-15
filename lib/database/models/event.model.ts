@@ -1,5 +1,4 @@
-import { Document } from "mongodb";
-import { Schema, Types, model, models } from "mongoose";
+import { Schema, Types, model, models, Document } from "mongoose";
 
 
 export interface IEvent extends Document {
@@ -28,8 +27,8 @@ const EventSchema = new Schema({
   price: {type: String},
   isFree: {type: Boolean, default: false},
   category: {type: Schema.Types.ObjectId, ref: "Category"},
-  organizer: {type: Schema.Types.ObjectId, ref: "User"}
+  // organizer: {type: Schema.Types.ObjectId, ref: "User"}
 })
 
-const Event = models.Event || model('Event', EventSchema);
+const Event = models?.Event || model('Event', EventSchema);
 export default Event;
